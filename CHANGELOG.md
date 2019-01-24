@@ -1,4 +1,4 @@
-# Changelog [OrbitallNews]
+# Changelog [CloneUber]
 
 As principais alterações neste projeto serão documentadas neste arquivo.
 
@@ -18,7 +18,10 @@ Segurança        para incentivar usuários a atualizarem em caso de vulnerabili
 
 ### Adicionado
 
-- Inclusão de biblioteca [react-native-swipe-list-view V1.5.1](https://www.npmjs.com/package/react-native-swipe-list-view)
+- Inclusão da biblioteca [react-native-maps V0.23.0](https://www.npmjs.com/package/react-native-maps)
+- Inclusão da biblioteca [react-native-google-places-autocomplete V1.3.9](https://www.npmjs.com/package/react-native-swipe-list-view)
+- Inclusão da biblioteca [styled-components V4.1.3](https://www.npmjs.com/package/styled-components)
+- Inclusão da biblioteca [react-native-maps-directions V1.6.0](https://www.npmjs.com/package/react-native-maps-directions)
 
 ### Modificado
 
