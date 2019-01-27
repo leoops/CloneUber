@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, Text } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import RouteMapDirection from './RouteMapDirection';
 import SearchBar from './SearchBar';
 import { getPixelSize } from '../Utils';
+import markerImage from '../assets/marker.png';
 
 export default class Map extends Component {
   constructor(props) {
@@ -37,11 +38,14 @@ export default class Map extends Component {
           region={region}
           ref={this.getMapRef}
         >
-          <RouteMapDirection
-            origin={origin}
-            destination={destination}
-            onReady={this.onReady}
-          />
+          <Fragment>
+            <Marker coordinate={destination} anchor={{ x: 0, y: 0 }} image={markerImage}/>
+            <RouteMapDirection
+              origin={origin}
+              destination={destination}
+              onReady={this.onReady}
+            />
+          </Fragment>
         </MapView>
         <SearchBar onPress={handleLocationSelected} />
       </View>
