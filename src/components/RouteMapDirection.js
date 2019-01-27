@@ -3,18 +3,15 @@ import { View, Text } from 'react-native';
 import MapViewDirections from 'react-native-maps-directions';
 
 export default class RouteMapDirection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
-    const { origin, destination } = this.props;
+    const { origin, destination, onReady } = this.props;
     return (
       <MapViewDirections
         origin={origin}
         destination={destination}
-        apikey="YOUR_KEY"
+        strokeColor="#000"
+        strokeWidth={3}
+        onReady={onReady}
       />
     );
   }
