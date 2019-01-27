@@ -18,9 +18,19 @@ export default class SearchBar extends Component {
         enablePoweredByContainer={false}
         autoFocus={false}
         fetchDetails
+        listViewDisplayed={this.searchFocused}
         onPress={onPress}
         returnKeyType={'search'}
-        textinputProps={{ autoCaptalize: 'none', autoCorrect: false }}
+        textinputProps={{
+          onFocus: () => {
+            this.setState({ searchFocused: false });
+          },
+          onBlur: () => {
+            this.setState({ searchFocused: true });
+          },
+          autoCaptalize: 'none',
+          autoCorrect: false,
+        }}
         query={{
           key: 'YOUR_KEY',
           language: 'pt-BR',
