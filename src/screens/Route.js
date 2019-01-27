@@ -34,13 +34,12 @@ export default class Route extends Component {
       },
       {
         timeout: 2000,
-        enableHighAccuracy: true,
         maximumAge: 1000,
       }
     );
   };
 
-  getRouter = (data, description) => {
+  handleLocationSelected = (data, description) => {
     this.setState(previousState => ({
       origin: {
         latitude: previousState.region.latitude,
@@ -49,6 +48,7 @@ export default class Route extends Component {
       destination: {
         latitude: description.geometry.location.lat,
         longitude: description.geometry.location.lng,
+        title: data.structured_formatting.main_text,
       },
     }));
   };
@@ -64,7 +64,7 @@ export default class Route extends Component {
         >
           <RouteMapDirection origin={origin} destination={destination} />
         </MapView>
-        <SearchBar onPress={this.getRouter} />
+        <SearchBar onPress={this.handleLocationSelected} />
       </View>
     );
   }
