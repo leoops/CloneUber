@@ -4614,6 +4614,11 @@ react-is@^16.6.0, react-is@^16.6.3:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.7.0.tgz#c1bd21c64f1f1364c6f70695ec02d69392f41bfa"
   integrity sha512-Z0VRQdF4NPDoI0tsXVMLkJLiwEBa+RP66g0xDHxgxysxSoCUccSten4RTF/UFvZF1dZvZ9Zu1sx+MDXwcOR34g==
 
+react-native-geocoding@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-geocoding/-/react-native-geocoding-0.3.0.tgz#7987ad98f52b2b5a912688e80347f5222861f2a9"
+  integrity sha512-Z5KM+PiwxF3BSq89WvRrIVpNhFAxiF/ftkwesfH+1U59a0oD9XCzEumKPHeP0Ymr1Bhrro4zFZnrQ3PHm4bjsg==
+
 react-native-google-places-autocomplete@1.3.9:
   version "1.3.9"
   resolved "https://registry.yarnpkg.com/react-native-google-places-autocomplete/-/react-native-google-places-autocomplete-1.3.9.tgz#34c2e8b51df40ecb55ef3ccf57caba4c89ff9b56"

@@ -22,6 +22,7 @@ Segurança        para incentivar usuários a atualizarem em caso de vulnerabili
 - Inclusão da biblioteca [react-native-google-places-autocomplete V1.3.9](https://www.npmjs.com/package/react-native-google-places-autocomplete)
 - Inclusão da biblioteca [styled-components V4.1.3](https://www.npmjs.com/package/styled-components)
 - Inclusão da biblioteca [react-native-maps-directions V1.6.0](https://www.npmjs.com/package/react-native-maps-directions)
+- Inclusão da biblioteca [react-native-geocoding V0.3.0](https://www.npmjs.com/package/react-native-geocoding)
 - Inclusão de tela de escolha de caminhos
 - Criação de componente de mapa
 - Criação de componente de barra de busca
