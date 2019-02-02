@@ -3,14 +3,20 @@ import { View, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import SearchBar from '../components/SearchBar';
 import RouteMapDirection from '../components/RouteMapDirection';
+import Geocoder from 'react-native-geocoding';
+import Map from '../components/Map';
+
+Geocoder.init('AIzaSyAtNFSLm1KhADnkief5lI_803sgu1RWLuk');
 
 export default class Route extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      region: null,
       origin: null,
+      region: null,
       destination: null,
+      location: null,
+      duration: null,
     };
   }
 
@@ -18,16 +24,19 @@ export default class Route extends Component {
     this.getUserLocation();
   };
 
-  getUserLocation = () => {
+  getUserLocation = async () => {
     navigator.geolocation.getCurrentPosition(
-      ({ coords: { latitude, longitude } }) => {
+      async ({ coords: { latitude, longitude } }) => {
+        const response = await Geocoder.from({ latitude, longitude });
+        const address = response.results[0].formatted_address;
+        const location = address.substring(0, address.indexOf(','));
         const region = {
           latitude,
           longitude,
           latitudeDelta: 0.0143,
           longitudeDelta: 0.0134,
         };
-        this.setState({ region: region });
+        this.setState({ region: region, location: location });
       },
       error => {
         console.warn(error);
@@ -53,17 +62,18 @@ export default class Route extends Component {
     }));
   };
   render() {
-    const { region, origin, destination } = this.state;
+    const { region, origin, destination, location } = this.state;
     return (
       <View style={{ flex: 1 }}>
-        <MapView
+        <Map
           style={{ flex: 1 }}
           showsUserLocation
           loadingEnabled
           region={region}
-        >
-          <RouteMapDirection origin={origin} destination={destination} />
-        </MapView>
+          origin={origin}
+          destination={destination}
+          location={location}
+        />
         <SearchBar onPress={this.handleLocationSelected} />
       </View>
     );
