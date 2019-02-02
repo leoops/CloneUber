@@ -5,11 +5,12 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 export default class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { searchFocused: false };
   }
 
-  render() {
+  render = () => {
     const { onPress } = this.props;
+    const { searchFocused } = this.state;
     return (
       <GooglePlacesAutocomplete
         placeholder="Busca"
@@ -18,7 +19,7 @@ export default class SearchBar extends Component {
         enablePoweredByContainer={false}
         autoFocus={false}
         fetchDetails
-        listViewDisplayed={this.searchFocused}
+        listViewDisplayed={searchFocused}
         onPress={onPress}
         returnKeyType={'search'}
         textinputProps={{
@@ -46,7 +47,7 @@ export default class SearchBar extends Component {
         }}
       />
     );
-  }
+  };
 }
 
 const styles = StyleSheet.create({
