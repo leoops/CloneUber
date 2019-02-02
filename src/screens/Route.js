@@ -6,7 +6,7 @@ import RouteMapDirection from '../components/RouteMapDirection';
 import Geocoder from 'react-native-geocoding';
 import Map from '../components/Map';
 
-Geocoder.init('AIzaSyAtNFSLm1KhADnkief5lI_803sgu1RWLuk');
+Geocoder.init('YOUR_KEY');
 
 export default class Route extends Component {
   constructor(props) {
