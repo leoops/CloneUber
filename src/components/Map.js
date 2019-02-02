@@ -1,34 +1,53 @@
 import React, { Component, Fragment } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import RouteMapDirection from './RouteMapDirection';
-import SearchBar from './SearchBar';
 import { getPixelSize } from '../Utils';
+
+import SearchBar from './SearchBar';
+import RouteMapDirection from './RouteMapDirection';
+
 import markerImage from '../assets/marker.png';
+
+import {
+  LocationBox,
+  LocationText,
+  LocationTimeBox,
+  LocationTimeText,
+  LocationTimeTextSmall,
+} from './Styles';
 
 export default class Map extends Component {
   constructor(props) {
     super(props);
-    this.mapRef= null,
+    this.mapRef = null;
+    this.state = { duration: null };
   }
 
   getMapRef = ref => {
-    this.setState({ mapRef: ref });
+    this.mapRef = ref;
   };
 
   onReady = result => {
-      this.mapRef.fitToCOordinates(result.coordinates, {
-          edgePadding: {
-              right: getPixelSize(50),
-              left: getPixelSize(50),
-              top: getPixelSize(50),
-              bottom: getPixelSize(50),
-          }
-      })
+    this.setState({ duration: Math.floor(result.duration) });
+    this.mapRef.fitToCoordinates(result.coordinates, {
+      edgePadding: {
+        right: getPixelSize(50),
+        left: getPixelSize(50),
+        top: getPixelSize(50),
+        bottom: getPixelSize(50),
+      },
+    });
   };
 
   render() {
-    const { region, origin, destination, handleLocationSelected } = this.props;
+    const { duration } = this.state;
+    const {
+      region,
+      origin,
+      destination,
+      location,
+      handleLocationSelected,
+    } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <MapView
@@ -38,14 +57,33 @@ export default class Map extends Component {
           region={region}
           ref={this.getMapRef}
         >
-          <Fragment>
-            <Marker coordinate={destination} anchor={{ x: 0, y: 0 }} image={markerImage}/>
-            <RouteMapDirection
-              origin={origin}
-              destination={destination}
-              onReady={this.onReady}
-            />
-          </Fragment>
+          {destination && (
+            <Fragment>
+              <Marker coordinate={origin} anchor={{ x: 0, y: 0 }}>
+                <LocationBox>
+                  <LocationTimeBox>
+                    <LocationTimeText>{duration}</LocationTimeText>
+                    <LocationTimeTextSmall>MIN</LocationTimeTextSmall>
+                  </LocationTimeBox>
+                  <LocationText>{location}</LocationText>
+                </LocationBox>
+              </Marker>
+              <Marker
+                coordinate={destination}
+                anchor={{ x: 0, y: 0 }}
+                image={markerImage}
+              >
+                <LocationBox>
+                  <LocationText>{destination.title}</LocationText>
+                </LocationBox>
+              </Marker>
+              <RouteMapDirection
+                origin={origin}
+                destination={destination}
+                onReady={this.onReady}
+              />
+            </Fragment>
+          )}
         </MapView>
         <SearchBar onPress={handleLocationSelected} />
       </View>
