@@ -34,7 +34,7 @@ export default class Map extends Component {
         right: getPixelSize(50),
         left: getPixelSize(50),
         top: getPixelSize(50),
-        bottom: getPixelSize(50),
+        bottom: getPixelSize(350),
       },
     });
   };

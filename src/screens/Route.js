@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import MapView from 'react-native-maps';
+import { View } from 'react-native';
 import SearchBar from '../components/SearchBar';
-import RouteMapDirection from '../components/RouteMapDirection';
 import Geocoder from 'react-native-geocoding';
 import Map from '../components/Map';
+import Details from './Details';
 
 Geocoder.init('YOUR_KEY');
 
@@ -74,7 +73,13 @@ export default class Route extends Component {
           destination={destination}
           location={location}
         />
-        <SearchBar onPress={this.handleLocationSelected} />
+        {destination ? (
+          <Fragment>
+            <Details />
+          </Fragment>
+        ) : (
+          <SearchBar onPress={this.handleLocationSelected} />
+        )}
       </View>
     );
   }
