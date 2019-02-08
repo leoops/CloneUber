@@ -8,7 +8,8 @@ export default class RouteMapDirection extends Component {
       <MapViewDirections
         origin={origin}
         destination={destination}
-        strokeColor="#000"
+        apikey="Your_Key"
+        strokeColor="#222"
         strokeWidth={3}
         onReady={onReady}
       />
