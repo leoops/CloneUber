@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { getPixelSize } from '../Utils';
 
-import SearchBar from './SearchBar';
 import RouteMapDirection from './RouteMapDirection';
 
 import markerImage from '../assets/marker.png';
@@ -39,15 +38,9 @@ export default class Map extends Component {
     });
   };
 
-  render() {
+  render = () => {
     const { duration } = this.state;
-    const {
-      region,
-      origin,
-      destination,
-      location,
-      handleLocationSelected,
-    } = this.props;
+    const { region, origin, destination, location } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <MapView
@@ -85,8 +78,7 @@ export default class Map extends Component {
             </Fragment>
           )}
         </MapView>
-        <SearchBar onPress={handleLocationSelected} />
       </View>
     );
-  }
+  };
 }
