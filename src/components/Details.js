@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {
-  Conteiner,
+  Container,
   TypeTitle,
   TypeDescription,
   TypeImage,
   RequestButton,
   RequestButtonText,
-} from '.Details.styled';
+} from './Details.styled';
 import uberx from '../assets/uberx.png';
 
 export default class Details extends Component {
@@ -17,16 +17,16 @@ export default class Details extends Component {
 
   render() {
     return (
-      <Conteiner>
+      <Container>
         <TypeTitle>Popular</TypeTitle>
         <TypeDescription>Viagens populares para o dia á dia</TypeDescription>
         <TypeImage source={uberx} />
         <TypeTitle>UberX</TypeTitle>
-        <TypeDescripton>R$ 6,00</TypeDescripton>
-        <RequestButton onPress={}>
+        <TypeDescription>R$ 6,00</TypeDescription>
+        <RequestButton onPress={() => {}}>
           <RequestButtonText>SOLICITAR</RequestButtonText>
         </RequestButton>
-      </Conteiner>
+      </Container>
     );
   }
 }
