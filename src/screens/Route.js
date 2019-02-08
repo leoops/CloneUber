@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { View, Image } from 'react-native';
 import Geocoder from 'react-native-geocoding';
 
@@ -51,10 +51,10 @@ export default class Route extends Component {
   };
 
   handlerBack = () => {
-    this.setState({ destionation: null });
+    this.setState({ destination: null });
   };
 
-  handleLocationSelected = (data, description) => {
+  handlerLocationSelected = (data, description) => {
     this.setState(previousState => ({
       origin: {
         latitude: previousState.region.latitude,
@@ -88,7 +88,7 @@ export default class Route extends Component {
             <Details />
           </Fragment>
         ) : (
-          <SearchBar onPress={handleLocationSelected} />
+          <SearchBar onPress={this.handlerLocationSelected} />
         )}
       </View>
     );
