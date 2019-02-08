@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
-import SearchBar from '../components/SearchBar';
+import { View, Image } from 'react-native';
 import Geocoder from 'react-native-geocoding';
-import Map from '../components/Map';
-import Details from './Details';
 
-Geocoder.init('YOUR_KEY');
+import Map from '../components/Map';
+import { Back } from '../components/Styles';
+import Details from '../components/Details';
+import SearchBar from '../components/SearchBar';
+
+import backImage from '../assets/back.png';
+
 
 export default class Route extends Component {
   constructor(props) {
@@ -47,6 +50,10 @@ export default class Route extends Component {
     );
   };
 
+  handlerBack = () => {
+    this.setState({ destionation: null });
+  };
+
   handleLocationSelected = (data, description) => {
     this.setState(previousState => ({
       origin: {
@@ -75,10 +82,13 @@ export default class Route extends Component {
         />
         {destination ? (
           <Fragment>
+            <Back onPress={this.handlerBack}>
+              <Image source={backImage} />
+            </Back>
             <Details />
           </Fragment>
         ) : (
-          <SearchBar onPress={this.handleLocationSelected} />
+          <SearchBar onPress={handleLocationSelected} />
         )}
       </View>
     );
